@@ -102,13 +102,15 @@ class FuzzyTsk:
                 x1s = x1s - self.alpha*e*w2*(y1-y2)/(pow(w1+w2, 2))*pow(x-x1m,2)/pow(x1s,3)*math.exp(-1/2*math.pow((x-x1m)/x1s,2))
                 x2s = x2s - self.alpha*e*w1*(y2-y1)/(pow(w1+w2, 2))*pow(x-x2m,2)/pow(x2s,3)*math.exp(-1/2*math.pow((x-x2m)/x2s,2))
             
-                somaErros = somaErros + e
+                somaErros = somaErros + pow(e, 2)
             
             # gerar novos pontos para a próxima iteração
             self.shuffle_points()
             
             listErros.append((int(epoca), somaErros))
             #print(str(epoca) + ": " + str(somaErros))
+
+            somaErros = 0
             
         plot_2d(np.array(listErros), labels=['erro'], title='Erro por época', block=True)
         
