@@ -81,7 +81,9 @@ class FuzzyTsk:
                                                                 p2, q2, x, return_all=False)) for x in np.arange(-2,2,self.step)])
                 plot_2d(extimated_points, self.points, ['estimado', 'esperado'],
                         'Após {} épocas - Erro = {}'.format(epoca, round(somaErros,2)))
-                
+             
+            somaErros = 0
+
             # fazer inferencia de todos os pontos gerados
             for i,x in enumerate(self.points.T[0]):
                 
@@ -108,13 +110,11 @@ class FuzzyTsk:
             self.shuffle_points()
             
             listErros.append((int(epoca), somaErros))
-            #print(str(epoca) + ": " + str(somaErros))
-
-            somaErros = 0
+            print(str(epoca) + ": " + str(somaErros))
             
         plot_2d(np.array(listErros), labels=['erro'], title='Erro por época', block=True)
         
 if __name__ == "__main__":
     
-    ft = FuzzyTsk(function, alpha=0.001, epocas=1000)
+    ft = FuzzyTsk(function, alpha=0.01, epocas=1000)
     ft.execute()
