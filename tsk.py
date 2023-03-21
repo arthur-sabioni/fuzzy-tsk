@@ -1,6 +1,9 @@
+# Tarefa - Aproximação de Funções com Modelos Fuzzy TSK - Simulação
+#
+# Arthur Lopes Sabioni
+# Julia Bindi Alencar de Jesus
 
 import numpy as np
-import random
 import math
 
 import matplotlib.pyplot as plt
